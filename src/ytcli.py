@@ -56,7 +56,7 @@ def play_video(url, audio_only=False):
 def main():
     check_dependencies()
     
-    print("=== Python YouTube Konsol Oynatıcısı (Android) ===")
+    print("=== Python YouTube Konsol Oynatıcısı ===")
     print("Çıkmak için 'q' yaz.\n")
     
     while True:
