@@ -23,10 +23,21 @@ Terminalden YouTube arama ve oynatma aracı. yt-dlp ve mpv üzerine kurulu, tara
 - `yt-dlp`
 - `yt-dlp` Python paketi
 
-## Kullanım
+## Kurulum ve Kullanım
+
+### Windows
+
+Windows için öncelikle winget kurmalısınız. Sonra indirdiğiniz "run.bat" dosyasına çift tıklayarak çalıştırabilirsiniz.
+
+### Linux
 
 ```bash
-python ytcli.py
+chmod +x run.sh
 ```
+ile çalıştırma yetkisi verin sonra,
 
-Arama terimi gir ya da doğrudan bir YouTube URL'si yapıştır. Sonuçlar arasından numara seçerek oynat, `q` ile çık.
+```bash
+./run.sh
+```
+diye çalıştırabilirsiniz. Script sudo ile paket kuracağı için şifreni soracak.
+
