@@ -78,7 +78,7 @@ def play_video(url, audio_only=False):
 
 def main():
     check_dependencies()
-    islem=input("İndirmek için 1, video açmak için direk enter'a basın:")
+    islem=input("\n\nVideo İndirme modu için 1, video açma modu için direk enter'a basın:")
     if islem == '1':
         url = input("URL gir: ").strip()
         choice = input("mp3 mi mp4 mü?: ").strip().lower()
