@@ -27,7 +27,7 @@ Terminalden YouTube arama ve oynatma aracı. yt-dlp ve mpv üzerine kurulu, tara
 
 ### Windows
 
-Windows için öncelikle winget kurmalısınız. Sonra indirdiğiniz "run.bat" dosyasına çift tıklayarak çalıştırabilirsiniz.
+Windows için öncelikle winget kurmalısınız. Sonra indirdiğiniz "run.bat" dosyasına çift tıklayarak çalıştırabilirsiniz. (NOT: şuanda kod linux için ayarlanmıştır windowsta çalışmayabilir. Bu sorun çözülecektir.)
 
 ### Linux
 
@@ -39,5 +39,4 @@ ile çalıştırma yetkisi verin sonra,
 ```bash
 ./run.sh
 ```
-diye çalıştırabilirsiniz. Script sudo ile paket kuracağı için şifreni soracak.
-
+diye çalıştırabilirsiniz. Script sudo ile paket kuracağı için şifrenizi soracak.
