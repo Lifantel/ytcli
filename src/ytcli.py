@@ -82,12 +82,12 @@ def main():
     if islem == 1:
         url = input("URL gir: ").strip()
         choice = input("mp3 mi mp4 mü?: ").strip().lower()
-
         download(url, choice)
+        sys.exit()
     else:
         print("=== Python YouTube Konsol Oynatıcısı ===")
-    print("Çıkmak için 'q' yaz.\n")
-    while True:
+        print("Çıkmak için 'q' yaz.\n")
+        while True:
         try:
             user_input = input("[?] Arama terimi veya URL girin: ")
             
