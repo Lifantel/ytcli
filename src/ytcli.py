@@ -88,7 +88,7 @@ def main():
         print("=== Python YouTube Konsol Oynatıcısı ===")
         print("Çıkmak için 'q' yaz.\n")
         while True:
-        try:
+         try:
             user_input = input("[?] Arama terimi veya URL girin: ")
             
             if not user_input:
