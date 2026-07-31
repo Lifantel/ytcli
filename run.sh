@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-INSTALL_DIR="$SCRIPT_DIR"
+REPO_URL="https://github.com/Lifantel/ytcli.git"
+INSTALL_DIR="$SCRIPT_DIR/ytcli"
 VENV_DIR="$INSTALL_DIR/venv"
 echo "=== ytcli kurulum scripti ==="
 if [ -f /etc/os-release ]; then
@@ -33,21 +34,29 @@ install_system_deps() {
             ;;
     esac
 }
-echo "[1/4] Sistem bağımlılıkları kuruluyor ($DISTRO_ID)..."
+echo "[1/5] Sistem bağımlılıkları kuruluyor ($DISTRO_ID)..."
 install_system_deps
-echo "[2/4] Sanal ortam oluşturuluyor..."
+echo "[2/5] Repo klonlanıyor..."
+if [ -d "$INSTALL_DIR/.git" ]; then
+    echo "Repo zaten mevcut, güncelleniyor..."
+    git -C "$INSTALL_DIR" pull
+else
+    rm -rf "$INSTALL_DIR"
+    git clone "$REPO_URL" "$INSTALL_DIR"
+fi
+echo "[3/5] Sanal ortam oluşturuluyor..."
 if [ ! -d "$VENV_DIR" ]; then
     python3 -m venv "$VENV_DIR"
 fi
 source "$VENV_DIR/bin/activate"
-echo "[3/4] Python bağımlılıkları kuruluyor..."
+echo "[4/5] Python bağımlılıkları kuruluyor..."
 pip install --upgrade pip
 if [ -f "$INSTALL_DIR/requirements.txt" ]; then
     pip install -r "$INSTALL_DIR/requirements.txt"
 else
     pip install yt-dlp
 fi
-echo "[4/4] ytcli başlatılıyor..."
+echo "[5/5] ytcli başlatılıyor..."
 python "$INSTALL_DIR/src/ytcli.py"
 
 deactivate
