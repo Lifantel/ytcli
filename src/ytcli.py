@@ -78,8 +78,8 @@ def play_video(url, audio_only=False):
 
 def main():
     check_dependencies()
-    islem=int(input("İndirmek için 1, video açmak için direk enter'a basın"))
-    if islem == 1:
+    islem=input("İndirmek için 1, video açmak için direk enter'a basın:")
+    if islem == '1':
         url = input("URL gir: ").strip()
         choice = input("mp3 mi mp4 mü?: ").strip().lower()
         download(url, choice)
@@ -90,49 +90,51 @@ def main():
         while True:
             try:
                 user_input = input("[?] Arama terimi veya URL girin: ")
-
+                
                 if not user_input:
                     continue
-
+                    
                 if user_input.lower() == "q":
                     print("Çıkış yapılıyor...")
                     break
-
+                    
+          
                 if user_input.startswith("http"):
                     mode = input("Sadece ses mi? (e/h): ").lower()
                     play_video(user_input, audio_only=(mode == "e"))
                     continue
-
+                    
+                
                 results = search_youtube(user_input)
-
+                
                 if not results:
                     print("Sonuç bulunamadı.")
                     continue
-
+                    
                 print("\n--- Arama Sonuçları ---")
                 for i, entry in enumerate(results, start=1):
                     title = entry.get("title", "Bilinmeyen Başlık")
                     uploader = entry.get("uploader", "Bilinmeyen Kanal")
                     print(f"{i}. {title} ({uploader})")
-
+                    
                 selection = input("\n[#] Oynatılacak numara (c iptal): ")
-
+                
                 if selection.lower() == "c":
                     continue
-
+                    
                 if selection.isdigit():
                     idx = int(selection) - 1
                     if 0 <= idx < len(results):
                         video_id = results[idx].get("id")
                         video_url = f"https://www.youtube.com/watch?v={video_id}"
-
+                        
                         mode = input("Sadece ses mi? (e/h): ").lower()
                         play_video(video_url, audio_only=(mode == "e"))
                     else:
                         print("Geçersiz seçim.")
                 else:
                     print("Geçersiz giriş.")
-
+                    
             except KeyboardInterrupt:
                 print("\nÇıkış yapılıyor...")
                 break
