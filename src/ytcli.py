@@ -5,10 +5,10 @@ import yt_dlp
 
 def check_dependencies():
     if not shutil.which("mpv"):
-        print("HATA: mpv bulunamadı. (pkg install mpv)")
+        print("HATA: mpv bulunamadı. Lütfen mpv'i indirin")
         sys.exit(1)
     if not shutil.which("yt-dlp"):
-        print("HATA: yt-dlp bulunamadı. (pkg install yt-dlp)")
+        print("HATA: yt-dlp bulunamadı. (pip install yt-dlp)")
         sys.exit(1)
 
 def search_youtube(query, max_results=5):
@@ -78,7 +78,8 @@ def play_video(url, audio_only=False):
 
 def main():
     check_dependencies()
-    islem=input("\n\nVideo İndirme modu için 1, video açma modu için direk enter'a basın:")
+    print("\n\nİşleminizi Seçiniz")
+    islem=input("Video İndirme modu için 1, video açma modu için direk enter'a basın:")
     if islem == '1':
         url = input("URL gir: ").strip()
         choice = input("mp3 mi mp4 mü?: ").strip().lower()
