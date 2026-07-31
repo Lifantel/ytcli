@@ -31,6 +31,29 @@ def search_youtube(query, max_results=5):
             print(f"Arama hatası: {e}")
             return []
 
+def download(url, choice):
+    if choice == "mp4":
+        cmd = [
+            "yt-dlp",
+            "-f", "bestvideo[ext=mp4][vcodec^=avc1]+bestaudio[ext=m4a]/best[ext=mp4]",
+            url
+        ]
+
+    elif choice == "mp3":
+        cmd = [
+            "yt-dlp",
+            "-x",
+            "--audio-format", "mp3",
+            "--audio-quality", "0",
+            url
+        ]
+    else:
+        print("Hatalı seçim. Sadece mp3 veya mp4 yaz.")
+        return
+
+    subprocess.run(cmd)
+
+
 def play_video(url, audio_only=False):
     print(f"\n Oynatılıyor: {url}\n")
     
@@ -55,7 +78,14 @@ def play_video(url, audio_only=False):
 
 def main():
     check_dependencies()
-    print("=== Python YouTube Konsol Oynatıcısı ===")
+    islem=int(input("İndirmek için 1, video açmak için direk enter'a basın"))
+    if islem == 1:
+        url = input("URL gir: ").strip()
+        choice = input("mp3 mi mp4 mü?: ").strip().lower()
+
+        download(url, choice)
+    else:
+        print("=== Python YouTube Konsol Oynatıcısı ===")
     print("Çıkmak için 'q' yaz.\n")
     while True:
         try:
