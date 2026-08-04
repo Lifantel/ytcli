@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 set "REPO_URL=https://github.com/Lifantel/ytcli.git"
-set "INSTALL_DIR=%LOCALAPPDATA%\ytcli"
+set "INSTALL_DIR=%~dp0ytcli"
 set "VENV_DIR=%INSTALL_DIR%\venv"
 
 echo === ytcli kurulum scripti (Windows) ===
